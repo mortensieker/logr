@@ -23,8 +23,8 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author sieker
  */
-@Api(tags = "log")
-@Path("log")
+@Api(tags = "logs")
+@Path("logs")
 @Produces(MediaType.APPLICATION_JSON)
 public class LogResource {
 

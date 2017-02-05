@@ -10,8 +10,8 @@ import javax.ws.rs.PathParam;
  *
  * @author sieker
  */
-@Api(tags = "task")
-@Path("task")
+@Api(tags = "tasks")
+@Path("tasks")
 public class TaskResource {
     
     @Inject

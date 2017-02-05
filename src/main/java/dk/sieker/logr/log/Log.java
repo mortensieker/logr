@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -16,7 +17,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
-@NamedQuery(name="allLogs", query = "SELECT l FROM Log l")
+@NamedQueries({
+    @NamedQuery(name="allLogs", query = "SELECT l FROM Log l"),
+    @NamedQuery(name="rangeLogs", query = "SELECT l FROM Log l WHERE l.start_time BETWEEN :start AND :end"),
+})
 public class Log {
     
     @Id
@@ -41,6 +45,10 @@ public class Log {
 
     public void setStartTime(LocalDateTime start_time) {
         this.start_time = start_time;
+    }
+
+    public void setEnd_time(LocalDateTime end_time) {
+        this.end_time = end_time;
     }
 
     public long getTaskId() {

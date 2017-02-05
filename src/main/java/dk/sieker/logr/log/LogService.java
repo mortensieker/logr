@@ -1,5 +1,6 @@
 package dk.sieker.logr.log;
 
+import java.time.LocalDate;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -13,10 +14,18 @@ import javax.persistence.PersistenceContext;
 public class LogService {
     
     @PersistenceContext
-    EntityManager em;
+    public EntityManager em;
     
     public List<Log> getAll() {
         List<Log> logs = em.createNamedQuery("allLogs", Log.class).getResultList();
+        return logs;
+    }
+    
+    public List<Log> getLogsFromRange(LocalDate start, LocalDate end) {
+        List<Log> logs = em.createNamedQuery("rangeLogs", Log.class)
+                .setParameter("start", start)
+                .setParameter("end", end)
+                .getResultList();
         return logs;
     }
     

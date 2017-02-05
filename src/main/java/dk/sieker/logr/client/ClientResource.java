@@ -20,8 +20,8 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author msa
  */
-@Api(tags = "client")
-@Path("client")
+@Api(tags = "clients")
+@Path("clients")
 @Produces(MediaType.APPLICATION_JSON)
 public class ClientResource {
     
